@@ -1,4 +1,5 @@
 # MrT
+<img src="https://raw.githubusercontent.com/ruby2elixir/mr_t/master/docs/mr-t.jpg" alt="alt text" height="200">
 
 Instant code-reloader and test runner for Elixir in one package.
 Currently tightly coupled to ExUnit and the conventional folder structure of Elixir packages.
