@@ -8,7 +8,8 @@ defmodule MrT.Utils do
 
   def compile, do: compile(Mix.Project.umbrella?)
   def compile(false) do
-    Mix.Tasks.Compile.Elixir.run([])
+    IEx.Helpers.recompile
+    # Mix.Tasks.Compile.Elixir.run([])
   end
 
   def compile(true) do
