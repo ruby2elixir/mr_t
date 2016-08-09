@@ -17,6 +17,7 @@ defmodule MrT.Runner.ExUnit do
 
   def require_run_cleanup(task, test_files) do
     IO.puts "running tests..."
+    require_test_helper
     modules = test_files |> Enum.map(&MrT.Utils.require_file/1) |> List.flatten
     ### Kernel.ParallelRequire.files is problematic due to race conditions on syntax errors...
     # modules = test_files |> Kernel.ParallelRequire.files([each_module: fn(x,y,z)-> IO.inspect({x, y ,z}) end ])
@@ -54,6 +55,10 @@ defmodule MrT.Runner.ExUnit do
       files
       |> unload
     end
+  end
+
+  def require_test_helper do
+    "test/test_helper.exs" |> MrT.Utils.require_file
   end
 
   def all_test_files do
