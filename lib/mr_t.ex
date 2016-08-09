@@ -9,20 +9,20 @@ defmodule MrT do
   end
 
   def doit() do
-    ensure_event_bus_run
-    ensure_watchers_run
     IO.write :stderr, "MrT started.\n"
+    ensure_event_bus_running
+    ensure_watchers_running
   end
 
   def start() do
     Application.ensure_all_started(:mr_t)
   end
 
-  def ensure_watchers_run do
+  def ensure_watchers_running do
     watchers(Mix.env) |> Enum.each(fn(m)-> m.start end)
   end
 
-  def ensure_event_bus_run do
+  def ensure_event_bus_running do
     MrT.EventBus.start
   end
 
