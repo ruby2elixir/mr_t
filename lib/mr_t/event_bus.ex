@@ -46,9 +46,6 @@ defmodule MrT.TestHandlerWatcher do
     {:noreply, event_bus_id}
   end
 
-  @doc """
-    starts a new handler listening for events on `event_bus_id`
-  """
   defp start_handler(event_bus_id) do
     case GenEvent.add_mon_handler(event_bus_id, MrT.TestHandler, []) do
      :ok ->
@@ -60,15 +57,15 @@ defmodule MrT.TestHandlerWatcher do
 end
 
 defmodule MrT.EventBus do
-  alias MrT.{TestHandler}
+  alias MrT.{TestHandlerWatcher}
   def start do
-    {_, pid} = GenEvent.start_link([name: :event_bus])
+    {_, _pid} = GenEvent.start_link([name: :event_bus])
     add_handler(Mix.env)
     :ok
   end
 
   def add_handler(:test) do
-    MrT.TestHandlerWatcher.start_link(:event_bus)
+    TestHandlerWatcher.start_link(:event_bus)
   end
 
   def add_handler(_) do
