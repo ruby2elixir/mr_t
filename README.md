@@ -31,8 +31,8 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
 
 ### TODO
-  [] make configuration more flexible
-  [] handle file deletion in Monitor.Src
-  [] write unit tests
-  [] make compatible with Phoenix/complex projects (?)
+    [ ] make configuration more flexible
+    [ ] handle file deletion in Monitor.Src
+    [ ] write unit tests
+    [ ] make compatible with Phoenix/complex projects (?)
 
