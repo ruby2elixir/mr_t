@@ -2,12 +2,12 @@ defmodule MrT.BeamReloader do
   def handle(file_path, events) do
     case matrix(file_path, events) do
       {_, _, true, true} ->   # update
-        IO.puts "reloading module #{modulename(file_path)}"
+        # IO.puts "reloading module #{modulename(file_path)}"
         MrT.Utils.reload file_path
       {true, true, _, false} -> # temp file
         nil
       {_, true, _, false} ->  # remove
-        IO.puts "unloading module #{modulename(file_path)}"
+        # IO.puts "unloading module #{modulename(file_path)}"
         MrT.Utils.unload file_path
       _ ->                    # create
         nil
