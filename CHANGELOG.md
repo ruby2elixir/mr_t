@@ -1,6 +1,9 @@
 ## CHANGELOG
 
 
+v0.5.6:
+-  fixes a regression bug, MrT.Monitor.Src was not restarted on syntax error, fixed by `MrT.Utils.require_file(file_path)` upfront
+
 v0.5.5:
 -  much less logic for reloading, overall simpler code
 
