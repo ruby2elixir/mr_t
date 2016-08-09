@@ -42,7 +42,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   - [mix test.watch](https://github.com/lpil/mix-test.watch/)
 
 ### TODO
-    [ ] remove most of the reloading logic, because now the recompilation happens with IEx.Helpers
+    [x] remove most of the reloading logic, because now the recompilation happens with IEx.Helpers
     [ ] make configuration more flexible
     [ ] handle file deletion in Monitor.Src
     [ ] write unit tests
