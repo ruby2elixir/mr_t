@@ -1,4 +1,4 @@
-defmodule MrT.TestRunner do
+defmodule MrT.Runner.ExUnit do
   def run_matching(_files) do
     all_test_files |> doit
   end

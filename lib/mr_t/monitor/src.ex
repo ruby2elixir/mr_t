@@ -18,7 +18,7 @@ defmodule MrT.Monitor.Src do
   """
   def optimistic_require(file_path, _events) do
     MrT.Utils.require_file(file_path)
-    MrT.TestRunner.run_matching([file_path])
+    MrT.Runner.ExUnit.run_matching([file_path])
     MrT.Utils.recompile
   end
 end
