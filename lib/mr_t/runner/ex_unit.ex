@@ -26,7 +26,7 @@ defmodule MrT.Runner.ExUnit do
   end
 
   def require_run_cleanup(task, test_files) do
-    IO.puts "running tests..."
+    # IO.puts "running tests..."
     modules = require_test_helper
     modules = modules ++ load_modules(test_files)
     ExUnit.Server.cases_loaded()
