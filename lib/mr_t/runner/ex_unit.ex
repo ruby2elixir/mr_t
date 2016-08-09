@@ -3,6 +3,10 @@ defmodule MrT.Runner.ExUnit do
     MrT.test_runner_strategy
   end
 
+  def run_all do
+    run_matching([""])
+  end
+
   def run_matching(files) do
     strategy.match(all_test_files, files)
     |> MrT.Utils.debug

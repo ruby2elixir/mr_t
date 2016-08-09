@@ -30,6 +30,11 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     iex> MrT.start
     # now code / write unit tests
 
+    ## for more manual control:
+    # run tests only with "user" in filename
+    iex> MrT.test_runner.run_matching(["user"])
+    # run all tests
+    iex> MrT.test_runner.run_all
 
 
 ### Inspired by:
