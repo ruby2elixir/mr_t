@@ -9,9 +9,9 @@ defmodule MrT do
   end
 
   def doit() do
-    IO.write :stderr, "MrT started.\n"
     ensure_event_bus_running
     ensure_watchers_running
+    MrT.Quotes.quote_of_day
   end
 
   def start() do
