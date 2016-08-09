@@ -30,6 +30,11 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     # now code / write unit tests
 
 
+
+### Inspired by:
+  - [ExSync](https://github.com/falood/exsync/)
+  - [mix test.watch](https://github.com/lpil/mix-test.watch/)
+
 ### TODO
     [ ] make configuration more flexible
     [ ] handle file deletion in Monitor.Src
