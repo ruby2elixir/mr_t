@@ -56,15 +56,11 @@ defmodule MrT.Config do
   end
 
   def src_extensions do
-    Application.get_env(:exsync, :extensions, [".erl", ".hrl", ".ex"])
+    Application.get_env(:mr_t, :extensions, [".erl", ".hrl", ".ex"])
   end
 
   def test_extensions do
-    [".exs", ".ex"]
-  end
-
-  def application do
-    :exsync
+    Application.get_env(:mr_t, :test_extensions, [".exs", ".ex"])
   end
 
   def app_source_dir do
