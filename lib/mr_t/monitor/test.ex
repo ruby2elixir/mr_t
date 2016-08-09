@@ -7,7 +7,7 @@ defmodule MrT.Monitor.Test do
 
   def callback(file_path, _events) do
     if (Path.extname file_path) in MrT.Config.test_extensions do
-      MrT.Runner.ExUnit.run_matching([file_path])
+      MrT.EventBus.event_for_tests(file_path)
     end
   end
 end
