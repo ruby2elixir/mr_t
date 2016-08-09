@@ -13,7 +13,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
     ```elixir
     def deps do
-      [{:mr_t, "~> 0.1.0", only: [:test, :dev]}]
+      [{:mr_t, "~> 0.5.0", only: [:test, :dev]}]
     end
     ```
 
