@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+
+v0.5.5:
+-  much less logic for reloading, overall simpler code
+
 v0.5.4:
 -  works better with controller tests (the matcher remove _controller from the filename before matching)
 

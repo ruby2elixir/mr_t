@@ -9,30 +9,12 @@ defmodule MrT.Utils do
   def compile, do: compile(Mix.Project.umbrella?)
   def compile(false) do
     IEx.Helpers.recompile
-    # Mix.Tasks.Compile.Elixir.run([])
   end
 
   def compile(true) do
     for %Mix.Dep{app: app, opts: opts} <- Mix.Dep.Umbrella.loaded do
       Mix.Project.in_project(app, opts[:path], fn _ -> compile end)
     end
-  end
-
-  def unload(module) when is_atom(module) do
-    module |> :code.purge
-    module |> :code.delete
-  end
-
-  def unload(beam_path) do
-    beam_path |> Path.basename(".beam") |> String.to_atom |> unload
-  end
-
-
-  def reload(beam_path) do      # beam file path
-    file = beam_path |> to_char_list
-    {:ok, binary, _} = :erl_prim_loader.get_file file
-    module = beam_path |> Path.basename(".beam") |> String.to_atom
-    :code.load_binary(module, file, binary)
   end
 
   def timediff(a, b), do: :timer.now_diff(b, a) / 1000 / 1000 # in secs

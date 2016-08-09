@@ -1,23 +1,4 @@
 defmodule MrT.Config do
-  def beam_dirs do
-    beam_dirs(Mix.Project.umbrella?)
-    |> List.flatten
-  end
-
-  def beam_dirs(false) do
-    [Mix.Project.compile_path]
-  end
-
-  def beam_dirs(true) do
-    for %Mix.Dep{app: app, opts: opts} <- Mix.Dep.Umbrella.loaded do
-      config = [
-        umbrella?: true,
-        app_path: opts[:build]
-      ]
-      Mix.Project.in_project(app, opts[:path], config, fn _ -> beam_dirs end)
-    end
-  end
-
   def src_dirs do
     src_dirs(Mix.Project.umbrella?)
     |> List.flatten
