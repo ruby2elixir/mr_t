@@ -16,5 +16,6 @@ defmodule MrT.RunStrategy.RootName do
     |> Path.rootname(".exs")
     |> Path.rootname(".ex")
     |> String.replace(~r/_test/, "")
+    |> String.replace(~r/_controller/, "")
   end
 end
