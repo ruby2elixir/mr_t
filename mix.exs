@@ -36,8 +36,10 @@ defmodule MrT.Mixfile do
   end
 
   defp package do
-    %{ licenses: ["MIT"],
-       links: %{"Github" => "https://github.com/ruby2elixir/mr_t"}
+    %{
+        maintainers: ["Roman Heinrich"],
+        licenses: ["MIT License"],
+        links: %{"Github" => "https://github.com/ruby2elixir/mr_t"}
      }
   end
 end
