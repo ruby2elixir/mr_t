@@ -1,6 +1,12 @@
 defmodule MrT.Runner.ExUnit do
-  def run_matching(_files) do
-    all_test_files |> doit
+  def strategy do
+    MrT.RunStrategy.RootName
+  end
+
+  def run_matching(files) do
+    strategy.match(all_test_files, files)
+    |> MrT.Utils.debug
+    |> doit
   end
 
   def run(test_files) do
