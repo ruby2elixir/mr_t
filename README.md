@@ -1,6 +1,8 @@
 # MrT
 
-**TODO: Add description**
+Instant code-reloader and test runner for Elixir in one package.
+Currently tightly coupled to ExUnit and the conventional folder structure of Elixir packages.
+
 
 ## Installation
 
@@ -10,15 +12,27 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
     ```elixir
     def deps do
-      [{:mr_t, "~> 0.1.0"}]
+      [{:mr_t, "~> 0.1.0", only: [:test, :dev]}]
     end
     ```
 
-  2. Ensure `mr_t` is started before your application:
+## Code Reloader
+    $ iex -s mix
+    # this starts only the code reloading, because we are in the :dev environment
+    iex> MrT.start
+    # now write some code in the editor, it will be immediately available in the IEx console
 
-    ```elixir
-    def application do
-      [applications: [:mr_t]]
-    end
-    ```
+
+## Testrunner
+    $ MIX_ENV=test iex -s mix
+    # this starts test runner and  code reloading, because we are in the :test environment
+    iex> MrT.start
+    # now code / write unit tests
+
+
+### TODO
+  [] make configuration more flexible
+  [] handle file deletion in Monitor.Src
+  [] write unit tests
+  [] make compatible with Phoenix/complex projects (?)
 
