@@ -1,6 +1,6 @@
 defmodule MrT.Runner.ExUnit do
   def strategy do
-    MrT.RunStrategy.RootName
+    MrT.test_runner_strategy
   end
 
   def run_matching(files) do
