@@ -30,4 +30,4 @@ use Mix.Config
 #     import_config "#{Mix.env}.exs"
 
 
-config :mr_t, debug: :true
+config :mr_t, debug: :false
