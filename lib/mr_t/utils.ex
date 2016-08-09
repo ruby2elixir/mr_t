@@ -42,4 +42,18 @@ defmodule MrT.Utils do
   def require_file(file) do
     :elixir_compiler.file(file) |> Enum.map(fn({m,_b})-> m end)
   end
+
+  @doc """
+  small tracing helper, that can be deactivated globally
+  """
+  def debug(v) do
+    case is_debug? do
+      true -> IO.inspect(v)
+      _    -> v
+    end
+  end
+
+  def is_debug? do
+    Application.get_env(:mr_t, :debug, false)
+  end
 end
