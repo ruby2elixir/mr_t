@@ -35,4 +35,11 @@ defmodule MrT.Utils do
   end
 
   def timediff(a, b), do: :timer.now_diff(b, a) / 1000 / 1000 # in secs
+
+  @doc """
+  compiles the module in memory on loading, for quicker turnaround
+  """
+  def require_file(file) do
+    :elixir_compiler.file(file) |> Enum.map(fn({m,_b})-> m end)
+  end
 end

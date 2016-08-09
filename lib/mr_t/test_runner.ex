@@ -17,17 +17,13 @@ defmodule MrT.TestRunner do
 
   def require_run_cleanup(task, test_files) do
     IO.puts "running tests..."
-    modules = test_files |> Enum.map(&require_file/1) |> List.flatten
+    modules = test_files |> Enum.map(&MrT.Utils.require_file/1) |> List.flatten
     ### Kernel.ParallelRequire.files is problematic due to race conditions on syntax errors...
     # modules = test_files |> Kernel.ParallelRequire.files([each_module: fn(x,y,z)-> IO.inspect({x, y ,z}) end ])
     ExUnit.Server.cases_loaded()
     %{failures: _failures} = results = Task.await(task, :infinity)
     modules |> delete_modules
     {:ok, results}
-  end
-
-  def require_file(file) do
-    :elixir_compiler.file(file) |> Enum.map(fn({m,b})-> m end)
   end
 
   def restart_ex_unit do

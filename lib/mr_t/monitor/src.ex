@@ -16,13 +16,9 @@ defmodule MrT.Monitor.Src do
   - triggers tests that might match that file
   - for proper handling trigger recompiling and let the beam monitor do the eventual unloading of modules(on deletion)
   """
-  def optimistic_require(file_path, events) do
-    require_file(file_path)
+  def optimistic_require(file_path, _events) do
+    MrT.Utils.require_file(file_path)
     MrT.TestRunner.run_matching([file_path])
     MrT.Utils.recompile
-  end
-
-  def require_file(file) do
-    :elixir_compiler.file(file) |> Enum.map(fn({m,b})-> m end)
   end
 end
