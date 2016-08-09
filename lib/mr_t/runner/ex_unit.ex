@@ -21,35 +21,20 @@ defmodule MrT.Runner.ExUnit do
     end
   end
 
-  import ExUnit.CaptureIO
-  import ExUnit.CaptureLog
-
   def require_run_cleanup(task, test_files) do
     IO.puts "running tests..."
-
-    capture_log(fn ->
-      capture_io(fn()->
-        Code.compiler_options(ignore_module_conflict: true)
-        modules = require_test_helper
-        modules = modules ++ load_modules(test_files)
-        IO.puts "After loading..."
-        send self(), {:loaded_modules, modules}
-        Code.compiler_options(ignore_module_conflict: false)
-      end)
-    end)
-
-    modules = receive do
-      {:loaded_modules, modules} -> modules
-    end
-    ### Kernel.ParallelRequire.files is problematic due to race conditions on syntax errors...
-    # modules = test_files |> Kernel.ParallelRequire.files([each_module: fn(x,y,z)-> IO.inspect({x, y ,z}) end ])
+    modules = require_test_helper
+    modules = modules ++ load_modules(test_files)
     ExUnit.Server.cases_loaded()
     %{failures: _failures} = results = Task.await(task, :infinity)
+    # FIXME: this might be not necessary due to direct code loading
     modules |> delete_modules
     {:ok, results}
   end
 
   def load_modules(test_files) do
+    ### Kernel.ParallelRequire.files is problematic due to race conditions on syntax errors...
+    # modules = test_files |> Kernel.ParallelRequire.files([each_module: fn(x,y,z)-> IO.inspect({x, y ,z}) end ])
     test_files |> Enum.map(&MrT.Utils.require_file/1) |> List.flatten
   end
 
