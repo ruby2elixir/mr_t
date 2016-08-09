@@ -35,7 +35,7 @@ defmodule MrT do
   end
 
   def watchers(:dev) do
-    [MrT.Monitor.Src, MrT.Monitor.Beam]
+    [MrT.Monitor.Src]
   end
 
   def watchers(:test) do
