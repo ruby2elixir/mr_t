@@ -2,7 +2,6 @@ defmodule MrT.TestHandler do
   use GenEvent
 
   def handle_event({:test, file}, files) do
-    # IO.puts "running tests for #{file}..."
     MrT.test_runner.run_matching([file])
     {:ok, [file | files]}
   end
