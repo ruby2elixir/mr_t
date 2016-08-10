@@ -24,12 +24,16 @@ defmodule MrT do
     MrT.Quotes.bye
   end
 
-  def ensure_watchers_running do
-    watchers(Mix.env) |> Enum.each(fn(m)-> m.start end)
+  def run_all do
+    test_runner.run_all
   end
 
-  def ensure_event_bus_running do
-    MrT.EventBus.start
+  def run_matching(file) when is_binary(file) do
+    run_matching([file])
+  end
+
+  def run_matching(files) when is_list(files) do
+    test_runner.run_matching(files)
   end
 
   def test_runner do
@@ -46,5 +50,13 @@ defmodule MrT do
 
   def watchers(:test) do
     watchers(:dev) ++ [MrT.Monitor.Test]
+  end
+
+  defp ensure_watchers_running do
+    watchers(Mix.env) |> Enum.each(fn(m)-> m.start end)
+  end
+
+  defp ensure_event_bus_running do
+    MrT.EventBus.start
   end
 end
