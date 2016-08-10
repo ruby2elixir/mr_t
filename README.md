@@ -83,9 +83,9 @@ This simple strategy allows you to run just the relevant tests quickly on each s
 
     ## for more manual control:
     # run tests only with "user" in filename
-    iex> MrT.test_runner.run_matching(["user"])
+    iex> MrT.run_matching("user")
     # run all tests
-    iex> MrT.test_runner.run_all
+    iex> MrT.run_all
 
 
 ### Stopping
