@@ -6,3 +6,7 @@ notifications:
 otp_release:
   - 19.0
 script: "MIX_ENV=test mix local.hex --force && MIX_ENV=test mix do deps.get, test"
+before_install:
+  # install inotifywait
+  - sudo apt-get update
+  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y inotify-tools
