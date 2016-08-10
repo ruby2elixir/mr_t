@@ -30,4 +30,8 @@ use Mix.Config
 #     import_config "#{Mix.env}.exs"
 
 
-config :mr_t, debug: :false
+config :mr_t, [
+  debug: :false,
+  test_runner: MrT.Runner.ExUnit,
+  test_runner_strategy: MrT.RunStrategy.RootName,
+]

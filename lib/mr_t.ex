@@ -27,11 +27,11 @@ defmodule MrT do
   end
 
   def test_runner do
-    MrT.Runner.ExUnit
+    Application.get_env(:mr_t, :test_runner, MrT.Runner.ExUnit)
   end
 
   def test_runner_strategy do
-    MrT.RunStrategy.RootName
+    Application.get_env(:mr_t, :test_runner_strategy, MrT.RunStrategy.RootName)
   end
 
   def watchers(:dev) do
