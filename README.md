@@ -4,6 +4,15 @@
 Instant code-reloader and test runner for Elixir in one package.
 Currently tightly coupled to ExUnit and the conventional folder structure of Elixir packages.
 
+## Installation
+  1. Add `mr_t` to your list of dependencies in `mix.exs`:
+
+    ```elixir
+    def deps do
+      [{:mr_t, "~> 0.5.0", only: [:test, :dev]}]
+    end
+    ```
+
 ### Alternatives:
   - [ExSync](https://github.com/falood/exsync/)
   - [mix test.watch](https://github.com/lpil/mix-test.watch/)
@@ -35,17 +44,6 @@ This simple strategy allows you to run just the relevant tests quickly on each s
 ### Short Demo
 <img src="https://raw.githubusercontent.com/ruby2elixir/mr_t/master/docs/mr_t_demo_draft.gif" alt="Demo" height="200">
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
-  1. Add `mr_t` to your list of dependencies in `mix.exs`:
-
-    ```elixir
-    def deps do
-      [{:mr_t, "~> 0.5.0", only: [:test, :dev]}]
-    end
-    ```
 
 ## Code Reloader
     $ iex -s mix
