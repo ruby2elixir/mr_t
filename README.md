@@ -68,6 +68,12 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 ### Stopping
     iex> MrT.stop
 
+### Automatic loading
+    # dev mode
+    $ iex -S mix mr_t
+
+    # test mode
+    $ MIX_ENV=test iex -S mix mr_t
 
 ### TODO
     [x] remove most of the reloading logic, because now the recompilation happens with IEx.Helpers
