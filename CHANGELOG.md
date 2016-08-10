@@ -1,5 +1,8 @@
 ## CHANGELOG
 
+v0.5.8:
+- run_all / run_matching functions directly on MrT module
+
 v0.5.7:
 - less verbosity by default (https://github.com/ruby2elixir/mr_t/pull/3)
 - short GIF demo in Readme

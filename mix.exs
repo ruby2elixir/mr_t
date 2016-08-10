@@ -3,7 +3,7 @@ defmodule MrT.Mixfile do
 
   def project do
     [app: :mr_t,
-     version: "0.5.7",
+     version: "0.5.8",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
