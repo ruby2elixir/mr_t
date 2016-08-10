@@ -81,6 +81,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     [x] remove most of the reloading logic, because now the recompilation happens with IEx.Helpers
     [x] allow stopping MrT
     [x] make configuration more flexible
+    [x] configurable verbosity (default is silent)
     [ ] allow multiple run_strategies
     [ ] write unit tests
 

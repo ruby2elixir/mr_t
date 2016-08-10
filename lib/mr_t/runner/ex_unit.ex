@@ -1,4 +1,5 @@
 defmodule MrT.Runner.ExUnit do
+  alias ExUnit.CaptureIO
   def strategy do
     MrT.test_runner_strategy
   end
@@ -38,8 +39,10 @@ defmodule MrT.Runner.ExUnit do
   end
 
   def restart_ex_unit do
-    Application.stop(:ex_unit)
-    Application.ensure_all_started(:ex_unit)
+    CaptureIO.capture_io(fn->
+      Application.stop(:ex_unit)
+      Application.ensure_all_started(:ex_unit)
+    end)
   end
 
   def unload(files) do
