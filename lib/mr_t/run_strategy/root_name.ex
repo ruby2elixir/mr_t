@@ -1,4 +1,5 @@
 defmodule MrT.RunStrategy.RootName do
+  def match(all_files, file) when is_binary(file), do: match(all_files, [file])
   def match(all_files, changed_files) do
     for file <- changed_files do
       match_file(all_files, file)
