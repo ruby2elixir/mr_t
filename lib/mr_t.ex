@@ -8,14 +8,20 @@ defmodule MrT do
     {:ok, self}
   end
 
-  def doit() do
+  def doit do
     ensure_event_bus_running
     ensure_watchers_running
     MrT.Quotes.quote_of_day
   end
 
-  def start() do
+  def start do
     Application.ensure_all_started(:mr_t)
+  end
+
+  def stop do
+    Application.stop(:exfswatch)
+    Application.stop(:mr_t)
+    MrT.Quotes.bye
   end
 
   def ensure_watchers_running do

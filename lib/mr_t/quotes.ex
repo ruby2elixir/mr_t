@@ -1,8 +1,17 @@
 defmodule MrT.Quotes do
   def quote_of_day do
+    bubble("Quote of the day: ", "   " <> (quotes |> Enum.random))
+  end
+
+  def bye do
+    bubble("", "   I pity the fool who stops testing!" )
+  end
+
+
+  def bubble(title, text) do
     IO.puts "------------------------------------------------------------------------------------------------"
-    IO.puts "Quote of the day: "
-    IO.puts "   " <> (quotes |> Enum.random)
+    IO.puts title
+    IO.puts text
     IO.puts "------------------------------------------------------------------------------------------------"
   end
 
