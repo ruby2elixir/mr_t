@@ -1,14 +1,17 @@
 defmodule MrT.Utils do
+  alias ExUnit.CaptureIO
   def recompile do
     a = :erlang.timestamp
     compile
     b = :erlang.timestamp
-    IO.puts "recompiled in #{timediff(a, b)} secs"
+    puts "recompiled in #{timediff(a, b)} secs"
   end
 
   def compile, do: compile(Mix.Project.umbrella?)
   def compile(false) do
-    IEx.Helpers.recompile
+    CaptureIO.capture_io(fn ->
+      IEx.Helpers.recompile
+    end)
   end
 
   def compile(true) do
@@ -32,14 +35,18 @@ defmodule MrT.Utils do
   @doc """
   small tracing helper, that can be deactivated globally
   """
-  def debug(v) do
-    case is_debug? do
-      true -> IO.inspect(v)
-      _    -> v
-    end
-  end
+  def debug(v),         do: debug(is_debug?, v)
+  def debug(true, v),   do: IO.inspect(v)
+  def debug(false, v),  do: v
+
+  def puts(v),          do: puts(is_debug?, v)
+  def puts(true, v),    do: IO.puts v
+  def puts(false, v),   do: v
 
   def is_debug? do
     Application.get_env(:mr_t, :debug, false)
   end
+
+  def verbosity_on(),  do: Application.put_env(:mr_t, :debug, true)
+  def verbosity_off(), do: Application.put_env(:mr_t, :debug, false)
 end

@@ -32,6 +32,8 @@ Right now there is only a very simple RootName strategy, that turns a file like 
 
 This simple strategy allows you to run just the relevant tests quickly on each save-file stroke, directly in the IEx. It works also with Phoenix controllers / models quite nicely. Because we're keeping the Erlang VM running, the feedback for our TDD cycle is exceptionally fast.
 
+### Short Demo
+<img src="https://raw.githubusercontent.com/ruby2elixir/mr_t/master/docs/mr_t_demo_draft.gif" alt="Demo" height="200">
 
 ## Installation
 
@@ -79,6 +81,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     [x] remove most of the reloading logic, because now the recompilation happens with IEx.Helpers
     [x] allow stopping MrT
     [x] make configuration more flexible
+    [x] configurable verbosity (default is silent)
     [ ] allow multiple run_strategies
     [ ] write unit tests
 
