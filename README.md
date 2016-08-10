@@ -1,4 +1,10 @@
 # MrT
+
+[![Build status](https://travis-ci.org/ruby2elixir/mr_t.svg "Build status")](https://travis-ci.org/ruby2elixir/mr_t)
+[![Hex version](https://img.shields.io/hexpm/v/mr_t.svg "Hex version")](https://hex.pm/packages/mr_t)
+![Hex downloads](https://img.shields.io/hexpm/dt/mr_t.svg "Hex downloads")
+
+
 <img src="https://raw.githubusercontent.com/ruby2elixir/mr_t/master/docs/mr-t.jpg" alt="alt text" height="200">
 
 Instant code-reloader and test runner for Elixir in one package.
