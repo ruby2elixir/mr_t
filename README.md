@@ -57,6 +57,16 @@ This simple strategy allows you to run just the relevant tests quickly on each s
 ### Demo: MrT Test mode
 <img src="https://raw.githubusercontent.com/ruby2elixir/mr_t/master/docs/mrt_test_mode.gif" alt="Demo" height="300">
 
+- TDD cycle
+- Starting MrT
+- Code reloading in test mode
+- Changes to code without matching tests files
+- Changes to code where only the relevant tests files are executed
+
+<br />
+<br />
+<br />
+
 
 ## Code Reloader
     $ iex -s mix
