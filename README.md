@@ -109,6 +109,8 @@ This simple strategy allows you to run just the relevant tests quickly on each s
     [x] allow stopping MrT
     [x] make configuration more flexible
     [x] configurable verbosity (default is silent)
-    [ ] allow multiple run_strategies
+    [ ] handle fs events properly (deletion / tmp files)
+    [ ] allow multiple ordered run_strategies
     [ ] write unit tests
+    [ ] implement some notification solution (https://github.com/apdunston/mix_test_notify)
 
