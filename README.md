@@ -24,6 +24,10 @@ Currently tightly coupled to ExUnit and the conventional folder structure of Eli
   - [mix test.watch](https://github.com/lpil/mix-test.watch/)
   - [EyeDrops](https://github.com/rkotze/eye_drops)
 
+### Desktop Notifications
+  - [ex_unit_notifier - Desktop notifications for ExUnit](https://github.com/navinpeiris/ex_unit_notifier)
+  - [mix_test_notify - OSX notifications for mix test](https://github.com/apdunston/mix_test_notify)
+
 ### Why pick this library instead of other alternatives?
 
 Well... Because of the cool name, of course!
@@ -112,5 +116,4 @@ This simple strategy allows you to run just the relevant tests quickly on each s
     [ ] handle fs events properly (deletion / tmp files)
     [ ] allow multiple ordered run_strategies
     [ ] write unit tests
-    [ ] implement some notification solution (https://github.com/apdunston/mix_test_notify)
 
