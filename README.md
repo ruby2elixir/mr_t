@@ -25,7 +25,7 @@ Currently tightly coupled to ExUnit and the conventional folder structure of Eli
   - [EyeDrops](https://github.com/rkotze/eye_drops)
 
 ### Desktop Notifications
-  - [ex_unit_notifier - Desktop notifications for ExUnit](https://github.com/navinpeiris/ex_unit_notifier)
+  - [ex_unit_notifier - Desktop notifications for ExUnit](https://github.com/navinpeiris/ex_unit_notifier) (recommended)
   - [mix_test_notify - OSX notifications for mix test](https://github.com/apdunston/mix_test_notify)
 
 ### Why pick this library instead of other alternatives?
