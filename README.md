@@ -79,14 +79,14 @@ This simple strategy allows you to run just the relevant tests quickly on each s
 
 
 ## Code Reloader
-    $ iex -s mix
+    $ iex -S mix
     # this starts only the code reloading, because we are in the :dev environment
     iex> MrT.start
     # now write some code in the editor, it will be immediately available in the IEx console
 
 
 ## Testrunner
-    $ MIX_ENV=test iex -s mix
+    $ MIX_ENV=test iex -S mix
     # this starts test runner and  code reloading, because we are in the :test environment
     iex> MrT.start
     # now code / write unit tests
