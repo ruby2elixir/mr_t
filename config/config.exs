@@ -33,5 +33,6 @@ use Mix.Config
 config :mr_t, [
   debug: :false,
   test_runner: MrT.Runner.ExUnit,
-  test_runner_strategy: MrT.RunStrategy.RootName,
+  # test_runner_strategy: MrT.RunStrategy.RootName,
+  test_runner_strategy: MrT.RunStrategy.RunAll,
 ]
