@@ -15,7 +15,7 @@ Currently tightly coupled to ExUnit and the conventional folder structure of Eli
 
     ```elixir
     def deps do
-      [{:mr_t, "~> 0.5.0", only: [:test, :dev]}]
+      [{:mr_t, "~> 0.6.0", only: [:test, :dev]}]
     end
     ```
 
