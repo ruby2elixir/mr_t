@@ -8,7 +8,9 @@ v0.6.0:
   - MrT.run_all_strategy_on
   - MrT.run_all_strategy_off
   - MrT.focus(:focus)
-  - MrT.reset
+  - MrT.unfocus
+  - MrT.verbosity_on
+  - MrT.verbosity_off
 
 v0.5.8:
 - run_all / run_matching functions directly on MrT module

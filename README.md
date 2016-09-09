@@ -19,15 +19,6 @@ Currently tightly coupled to ExUnit and the conventional folder structure of Eli
     end
     ```
 
-### Alternatives:
-  - [ExSync](https://github.com/falood/exsync/)
-  - [mix test.watch](https://github.com/lpil/mix-test.watch/)
-  - [EyeDrops](https://github.com/rkotze/eye_drops)
-
-### Desktop Notifications
-  - [ex_unit_notifier - Desktop notifications for ExUnit](https://github.com/navinpeiris/ex_unit_notifier) (recommended)
-  - [mix_test_notify - OSX notifications for mix test](https://github.com/apdunston/mix_test_notify)
-
 ### Why pick this library instead of other alternatives?
 
 Well... Because of the cool name, of course!
@@ -97,16 +88,36 @@ This simple strategy allows you to run just the relevant tests quickly on each s
     # run all tests
     iex> MrT.run_all
 
+    # run only tests with tag :focus in matched files
+    iex> MrT.focus(:focus)
+
+    # can be combined with RunAll strategy to run focused tests in all test files
+    iex> MrT.run_all_strategy_on
+
+
+    ### when finished with focused test, reset and turn back to RootName strategy
+    # run only files matching basename
+    iex> MrT.run_all_strategy_off
+    # reverse / reset  ExUnit focus
+    iex> MrT.unfocus
+
+
+    ### debugging with verbose mode
+    iex> MrT.verbosity_on
+    iex> MrT.verbosity_off
+
 
 ### Stopping
     iex> MrT.stop
 
-### Automatic loading
-    # dev mode
-    $ iex -S mix mr_t
+### Alternatives:
+  - [ExSync](https://github.com/falood/exsync/)
+  - [mix test.watch](https://github.com/lpil/mix-test.watch/)
+  - [EyeDrops](https://github.com/rkotze/eye_drops)
 
-    # test mode
-    $ MIX_ENV=test iex -S mix mr_t
+### Desktop Notifications
+  - [ex_unit_notifier - Desktop notifications for ExUnit](https://github.com/navinpeiris/ex_unit_notifier) (recommended)
+  - [mix_test_notify - OSX notifications for mix test](https://github.com/apdunston/mix_test_notify)
 
 ### TODO
     [x] remove most of the reloading logic, because now the recompilation happens with IEx.Helpers

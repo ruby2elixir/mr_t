@@ -17,9 +17,9 @@ defmodule MrT.Runner.Config do
   Reset configuration for ExUnit to defaults
 
   Example:
-    iex> MrT.Runner.Config.reset
+    iex> MrT.Runner.Config.unfocus
   """
-  def reset do
+  def unfocus do
     ExUnit.configure(include: [], exclude: [])
   end
 end

@@ -1,5 +1,6 @@
 defmodule MrT do
   alias MrT.Config
+  alias MrT.Utils
   alias MrT.Runner.Config, as: RunnerConfig
   def start do
     Application.ensure_all_started(:mr_t)
@@ -15,7 +16,10 @@ defmodule MrT do
   defdelegate run_matching(files), to: Config.test_runner
 
   defdelegate focus(f),            to: RunnerConfig
-  defdelegate reset,               to: RunnerConfig
+  defdelegate unfocus,             to: RunnerConfig
+
+  defdelegate verbosity_on,        to: Utils
+  defdelegate verbosity_off,       to: Utils
 
   @doc """
   Convenience functions to turn on/off all tests strategy
