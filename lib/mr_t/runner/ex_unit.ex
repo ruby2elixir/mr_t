@@ -53,11 +53,9 @@ defmodule MrT.Runner.ExUnit do
 
   def doit(files) do
     try do
-      files
-      |> run
+      files |> run
     after
-      files
-      |> unload
+      files |> unload
     end
   end
 
