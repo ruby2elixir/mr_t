@@ -1,9 +1,10 @@
 defmodule MrT.Mixfile do
   use Mix.Project
+  @version "0.6.0"
 
   def project do
     [app: :mr_t,
-     version: "0.5.8",
+     version: @version,
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,

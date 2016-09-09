@@ -1,5 +1,15 @@
 ## CHANGELOG
 
+
+v0.6.0:
+- flexible ExUnit wrapper (lib/runner/config.ex)
+- more docs
+- new top-level functions
+  - MrT.run_all_strategy_on
+  - MrT.run_all_strategy_off
+  - MrT.focus(:focus)
+  - MrT.reset
+
 v0.5.8:
 - run_all / run_matching functions directly on MrT module
 
