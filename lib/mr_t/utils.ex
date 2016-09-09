@@ -1,4 +1,8 @@
 defmodule MrT.Utils do
+  @moduledoc """
+  misc functions that did not warrant a separate module (yet)
+  """
+
   alias ExUnit.CaptureIO
   def recompile do
     a = :erlang.timestamp
@@ -52,6 +56,9 @@ defmodule MrT.Utils do
     Application.get_env(:mr_t, :debug, false)
   end
 
+  @doc """
+  turns verbose mode on / off
+  """
   def verbosity_on(),  do: Application.put_env(:mr_t, :debug, true)
   def verbosity_off(), do: Application.put_env(:mr_t, :debug, false)
 end

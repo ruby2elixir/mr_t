@@ -13,10 +13,16 @@ defmodule MrT.Config do
   def test_runner_strategy(:root_name), do: Application.put_env(:mr_t, :test_runner_strategy, MrT.RunStrategy.RootName)
   def test_runner_strategy(v),          do: Application.put_env(:mr_t, :test_runner_strategy, v)
 
+  @doc """
+  file extensions to match in src dirs
+  """
   def src_extensions do
     Application.get_env(:mr_t, :extensions, [".erl", ".hrl", ".ex"])
   end
 
+  @doc """
+  file extensions to match in test dirs
+  """
   def test_extensions do
     Application.get_env(:mr_t, :test_extensions, [".exs", ".ex"])
   end
