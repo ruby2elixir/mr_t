@@ -1,5 +1,6 @@
 defmodule MrT do
   alias MrT.Config
+  alias MrT.Runner.Config, as: RunnerConfig
   def start do
     Application.ensure_all_started(:mr_t)
   end
@@ -10,17 +11,22 @@ defmodule MrT do
     MrT.Quotes.bye
   end
 
-  def run_all do
-    Config.test_runner.run_all
-  end
+  defdelegate run_all,             to: Config.test_runner
+  defdelegate run_matching(files), to: Config.test_runner
 
-  def run_matching(file) when is_binary(file) do
-    run_matching([file])
-  end
+  defdelegate focus(f),            to: RunnerConfig
+  defdelegate reset,               to: RunnerConfig
 
-  def run_matching(files) when is_list(files) do
-    Config.test_runner.run_matching(files)
-  end
+  @doc """
+  Convenience functions to turn on/off all tests strategy
+
+  Example:
+    iexd> MrT.run_all_strategy_on
+    iexd> MrT.run_all_strategy_off
+  """
+
+  def run_all_strategy_on,  do: Config.test_runner_strategy(:all)
+  def run_all_strategy_off, do: Config.test_runner_strategy(:root_name)
 
   def start(_, _) do
     cond do

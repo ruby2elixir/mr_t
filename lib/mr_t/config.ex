@@ -1,17 +1,17 @@
 defmodule MrT.Config do
   @doc """
-  configured test runner, defaults to Runner.ExUnit
+  test runner, defaults to Runner.ExUnit
   """
-  def test_runner do
-    Application.get_env(:mr_t, :test_runner, MrT.Runner.ExUnit)
-  end
+  def test_runner,    do: Application.get_env(:mr_t, :test_runner, MrT.Runner.ExUnit)
+  def test_runner(v), do: Application.put_env(:mr_t, :test_runner, v)
 
   @doc """
-  configured strategy how to filter test files
+  strategy how to filter test files
   """
-  def test_runner_strategy do
-    Application.get_env(:mr_t, :test_runner_strategy, MrT.RunStrategy.RootName)
-  end
+  def test_runner_strategy,  do: Application.get_env(:mr_t, :test_runner_strategy, MrT.RunStrategy.RootName)
+  def test_runner_strategy(:all),       do: Application.put_env(:mr_t, :test_runner_strategy, MrT.RunStrategy.RunAll)
+  def test_runner_strategy(:root_name), do: Application.put_env(:mr_t, :test_runner_strategy, MrT.RunStrategy.RootName)
+  def test_runner_strategy(v),          do: Application.put_env(:mr_t, :test_runner_strategy, v)
 
   def src_extensions do
     Application.get_env(:mr_t, :extensions, [".erl", ".hrl", ".ex"])

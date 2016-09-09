@@ -6,6 +6,10 @@ defmodule MrT.Runner.ExUnit do
     run_matching([""])
   end
 
+  def run_matching(file) when is_binary(file) do
+    run_matching([file])
+  end
+
   def run_matching(files) do
     strategy.match(all_test_files, files)
     |> MrT.Utils.debug
