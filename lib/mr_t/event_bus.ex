@@ -2,7 +2,7 @@ defmodule MrT.TestHandler do
   use GenEvent
 
   def handle_event({:test, file}, files) do
-    MrT.test_runner.run_matching([file])
+    MrT.Config.test_runner.run_matching([file])
     {:ok, [file | files]}
   end
 

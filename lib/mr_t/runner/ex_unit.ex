@@ -1,8 +1,6 @@
 defmodule MrT.Runner.ExUnit do
   alias ExUnit.CaptureIO
-  def strategy do
-    MrT.test_runner_strategy
-  end
+  def strategy,  do: MrT.Config.test_runner_strategy
 
   def run_all do
     run_matching([""])
