@@ -1,4 +1,8 @@
 defmodule MrT.Monitor.Src do
+  @moduledoc """
+  Watcher/monitor module responsible for `src` files, required recompilation
+  """
+
   use ExFSWatch, dirs: MrT.Config.src_dirs
 
   def callback(:stop) do

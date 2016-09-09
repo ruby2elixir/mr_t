@@ -1,4 +1,8 @@
 defmodule MrT.Monitor.Test do
+  @moduledoc """
+  Watcher/monitor module responsible for `test` files
+  """
+
   use ExFSWatch, dirs: MrT.Config.test_dirs
 
   def callback(:stop) do

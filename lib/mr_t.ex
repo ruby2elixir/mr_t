@@ -1,19 +1,6 @@
 defmodule MrT do
-  def start(_, _) do
-    case Mix.env do
-      :dev  -> doit()
-      :test -> doit()
-      _     -> IO.write :stderr, "MrT NOT stared. Only :dev, :test environments are supported.\n"
-    end
-    {:ok, self}
-  end
-
-  def doit do
-    ensure_event_bus_running
-    ensure_watchers_running
-    MrT.Quotes.quote_of_day
-  end
-
+  alias MrT.Config
+  alias MrT.Runner.Config, as: RunnerConfig
   def start do
     Application.ensure_all_started(:mr_t)
   end
@@ -24,31 +11,42 @@ defmodule MrT do
     MrT.Quotes.bye
   end
 
-  def run_all do
-    test_runner.run_all
+  defdelegate run_all,             to: Config.test_runner
+  defdelegate run_matching(files), to: Config.test_runner
+
+  defdelegate focus(f),            to: RunnerConfig
+  defdelegate reset,               to: RunnerConfig
+
+  @doc """
+  Convenience functions to turn on/off all tests strategy
+
+  Example:
+    iexd> MrT.run_all_strategy_on
+    iexd> MrT.run_all_strategy_off
+  """
+
+  def run_all_strategy_on,  do: Config.test_runner_strategy(:all)
+  def run_all_strategy_off, do: Config.test_runner_strategy(:root_name)
+
+  def start(_, _) do
+    cond do
+      Mix.env in [:dev, :test] -> _start()
+      true                     -> IO.write :stderr, "MrT NOT stared. Only :dev, :test environments are supported.\n"
+    end
+    {:ok, self}
   end
 
-  def run_matching(file) when is_binary(file) do
-    run_matching([file])
+  def _start do
+    ensure_event_bus_running
+    ensure_watchers_running
+    MrT.Quotes.quote_of_day
   end
 
-  def run_matching(files) when is_list(files) do
-    test_runner.run_matching(files)
-  end
-
-  def test_runner do
-    Application.get_env(:mr_t, :test_runner, MrT.Runner.ExUnit)
-  end
-
-  def test_runner_strategy do
-    Application.get_env(:mr_t, :test_runner_strategy, MrT.RunStrategy.RootName)
-  end
-
-  def watchers(:dev) do
+  defp watchers(:dev) do
     [MrT.Monitor.Src]
   end
 
-  def watchers(:test) do
+  defp watchers(:test) do
     watchers(:dev) ++ [MrT.Monitor.Test]
   end
 

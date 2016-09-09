@@ -113,6 +113,7 @@ This simple strategy allows you to run just the relevant tests quickly on each s
     [x] allow stopping MrT
     [x] make configuration more flexible
     [x] configurable verbosity (default is silent)
+    [x] allow adding ExUnit contraints (tags)
     [ ] Add MrT.Doctor for self-diagnosis
     [ ] handle fs events properly (deletion / tmp files)
     [ ] allow multiple ordered run_strategies

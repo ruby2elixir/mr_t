@@ -1,11 +1,13 @@
 defmodule MrT.Runner.ExUnit do
   alias ExUnit.CaptureIO
-  def strategy do
-    MrT.test_runner_strategy
-  end
+  def strategy,  do: MrT.Config.test_runner_strategy
 
   def run_all do
     run_matching([""])
+  end
+
+  def run_matching(file) when is_binary(file) do
+    run_matching([file])
   end
 
   def run_matching(files) do
@@ -53,11 +55,9 @@ defmodule MrT.Runner.ExUnit do
 
   def doit(files) do
     try do
-      files
-      |> run
+      files |> run
     after
-      files
-      |> unload
+      files |> unload
     end
   end
 

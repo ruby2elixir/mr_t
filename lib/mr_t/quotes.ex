@@ -1,4 +1,8 @@
 defmodule MrT.Quotes do
+  @moduledoc """
+  A tongue-in-cheek module with some quotes from Mr. T
+  """
+
   def quote_of_day do
     bubble("Quote of the day: ", "   " <> (quotes |> Enum.random))
   end
