@@ -4,7 +4,7 @@ defmodule MrT.Quotes do
   """
 
   def quote_of_day do
-    bubble("Quote of the day: ", "   " <> (quotes |> Enum.random))
+    bubble("Quote of the day: ", "   " <> (quotes() |> Enum.random))
   end
 
   def bye do

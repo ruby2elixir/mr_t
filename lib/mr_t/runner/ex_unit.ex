@@ -11,13 +11,13 @@ defmodule MrT.Runner.ExUnit do
   end
 
   def run_matching(files) do
-    strategy.match(all_test_files, files)
+    strategy().match(all_test_files(), files)
     |> MrT.Utils.debug
     |> doit
   end
 
   def run(test_files) do
-    restart_ex_unit
+    restart_ex_unit()
     task = Task.async(ExUnit, :run, [])
     try do
       require_run_cleanup(task, test_files)
@@ -29,9 +29,9 @@ defmodule MrT.Runner.ExUnit do
   end
 
   def require_run_cleanup(task, test_files) do
-    require_test_helper
+    require_test_helper()
     load_modules(test_files)
-    ExUnit.Server.cases_loaded()
+    ExUnit.Server.modules_loaded()
     %{failures: _failures} = results = Task.await(task, :infinity)
     {:ok, results}
   end

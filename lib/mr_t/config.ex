@@ -35,18 +35,19 @@ defmodule MrT.Config do
     |> List.flatten
   end
 
+
   defp src_dirs(false) do
     Mix.Project.config
-    |> Dict.take([:elixirc_paths, :erlc_paths, :erlc_include_path])
-    |> Dict.values
+    |> Map.take([:elixirc_paths, :erlc_paths, :erlc_include_path])
+    |> Map.values
     |> List.flatten
-    |> Enum.map(&Path.join app_source_dir, &1)
+    |> Enum.map(&Path.join app_source_dir(), &1)
     |> Enum.filter(&File.exists?/1)
   end
 
   defp src_dirs(true) do
     for %Mix.Dep{app: app, opts: opts} <- Mix.Dep.Umbrella.loaded do
-      Mix.Project.in_project(app, opts[:path], fn _ -> src_dirs end)
+      Mix.Project.in_project(app, opts[:path], fn _ -> src_dirs() end)
     end
   end
 
@@ -66,7 +67,7 @@ defmodule MrT.Config do
 
   defp test_dirs(true) do
     for %Mix.Dep{app: app, opts: opts} <- Mix.Dep.Umbrella.loaded do
-      Mix.Project.in_project(app, opts[:path], fn _ -> test_dirs end)
+      Mix.Project.in_project(app, opts[:path], fn _ -> test_dirs() end)
     end
   end
 

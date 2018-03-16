@@ -6,7 +6,7 @@ defmodule MrT.Utils do
   alias ExUnit.CaptureIO
   def recompile do
     a = :erlang.timestamp
-    compile
+    compile()
     b = :erlang.timestamp
     puts "recompiled in #{timediff(a, b)} secs"
   end
@@ -20,7 +20,7 @@ defmodule MrT.Utils do
 
   def compile(true) do
     for %Mix.Dep{app: app, opts: opts} <- Mix.Dep.Umbrella.loaded do
-      Mix.Project.in_project(app, opts[:path], fn _ -> compile end)
+      Mix.Project.in_project(app, opts[:path], fn _ -> compile() end)
     end
   end
 
@@ -44,11 +44,11 @@ defmodule MrT.Utils do
   @doc """
   small tracing helper, that can be deactivated globally
   """
-  def debug(v),         do: debug(is_debug?, v)
+  def debug(v),         do: debug(is_debug?(), v)
   def debug(true, v),   do: IO.inspect(v)
   def debug(false, v),  do: v
 
-  def puts(v),          do: puts(is_debug?, v)
+  def puts(v),          do: puts(is_debug?(), v)
   def puts(true, v),    do: IO.puts v
   def puts(false, v),   do: v
 

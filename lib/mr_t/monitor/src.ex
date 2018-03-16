@@ -3,7 +3,7 @@ defmodule MrT.Monitor.Src do
   Watcher/monitor module responsible for `src` files, required recompilation
   """
 
-  use ExFSWatch, dirs: MrT.Config.src_dirs
+  use ExFSWatch, dirs: MrT.Config.src_dirs()
 
   def callback(:stop) do
     IO.puts "STOP"

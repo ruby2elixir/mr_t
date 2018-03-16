@@ -37,13 +37,13 @@ defmodule MrT do
       Mix.env in [:dev, :test] -> _start()
       true                     -> IO.write :stderr, "MrT NOT stared. Only :dev, :test environments are supported.\n"
     end
-    {:ok, self}
+    {:ok, self()}
   end
 
   def _start do
-    ensure_event_bus_running
-    ensure_watchers_running
-    MrT.Quotes.quote_of_day
+    ensure_event_bus_running()
+    ensure_watchers_running()
+    MrT.Quotes.quote_of_day()
   end
 
   defp watchers(:dev) do

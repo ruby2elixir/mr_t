@@ -11,7 +11,7 @@ defmodule MrT.Mixfile do
      deps: deps(),
      description: "Instant code-reloader and test runner for Elixir in one package",
      source_url: "https://github.com/ruby2elixir/mr_t",
-     package: package]
+     package: package()]
   end
 
   # Configuration for the OTP application
