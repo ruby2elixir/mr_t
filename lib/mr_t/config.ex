@@ -38,8 +38,8 @@ defmodule MrT.Config do
 
   defp src_dirs(false) do
     Mix.Project.config
-    |> Map.take([:elixirc_paths, :erlc_paths, :erlc_include_path])
-    |> Map.values
+    |> Keyword.take([:elixirc_paths, :erlc_paths, :erlc_include_path])
+    |> Keyword.values
     |> List.flatten
     |> Enum.map(&Path.join app_source_dir(), &1)
     |> Enum.filter(&File.exists?/1)
